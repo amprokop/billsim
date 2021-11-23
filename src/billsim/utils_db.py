@@ -3,9 +3,9 @@
 import sys
 import logging
 from sqlalchemy.orm import Session
+from billsim import pymodels, constants
 from billsim.utils import getBillLength
 from billsim.database import SessionLocal
-from billsim import pymodels, constants
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler(sys.stdout))
