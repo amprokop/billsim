@@ -63,6 +63,30 @@ Then you can run the following command to find similar bills (the bill itself sh
 >>>    save_bill_to_bill(b2b[bill]) 
 ```
 
+### Elasticsearch with docker compose
+
+With docker-compose, (or podman-compose, installed with `pip install podman-compose`), start an ES cluster from the `docker-compose.yml` provided in this repository.
+
+See https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_notes_for_production_use_and_defaults
+
+Create the local directory and then provide permissions:app-name:
+
+``` 
+mkdir /usr/local/share/elasticsearch
+mkdir /usr/local/share/elasticsearch/data
+```
+
+```bash
+chmod g+rwx /usr/local/share/elasticsearch
+chgrp 0 /usr/local/share/elasticsearch/data
+```
+(using `/local/` for access on MacOs. Any path may be used, and set in the volumes in the docker-compose.yml file.)
+
+Then, in a virtualenv with all requirements installed, run the following commands in Python, from the `src` directory to create the index:
+
+
+The `chgrp` command may require `sudo`.
+
 ## Build and test
 
 Tests, built with `pytest` are found in the `tests` directory. To run the tests, run `make` (requires cmake and pytest installed) or run `pytest -rs tests` directly. 
